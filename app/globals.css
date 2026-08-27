@@ -2,7 +2,6 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
 }
 
 @theme inline {
@@ -14,8 +13,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ededed;
   }
 }
 
@@ -23,4 +21,27 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.00rem, calc(0.952rem + 0.238vw), 1.25rem);
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: clamp(1.80rem, calc(1.714rem + 0.429vw), 2.25rem);
+  }
+
+  h2 {
+    font-size: clamp(1.50rem, calc(1.429rem + 0.357vw), 1.88rem);
+  }
+
+  .label {
+    text-transform: uppercase;
+    font-size: clamp(.5rem, calc(0.752rem + 0.238vw), 1.25rem);
+  }
+
+  .nav-button {
+    width: clamp(1rem, 15vw, 6rem);
+    height: clamp(1rem, 15vw, 6rem);
+  }
 }
