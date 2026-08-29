@@ -10,6 +10,10 @@ export default function Card({activeHabitat}: CardProps) {
         ? data
         : data.filter((item) => item.labels.includes(activeHabitat.toLowerCase()));
 
+    if (visible.length === 0) {
+        return <p className="blurb">No species recorded in this habitat.</p>
+    }
+
     return (
         <div className="card-component">
             {
