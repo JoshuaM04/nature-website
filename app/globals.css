@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Slab:wght@100..900&family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Slab:wght@100..900&family=Share+Tech&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #f4f6f1;
+
 }
 
 @theme inline {
@@ -11,41 +13,201 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@theme {
+  /* PRIMARY */
+  --color-canopy: #1E3A2C;
+  --color-moss: #2C5F4C;
+
+  /* SECONDARY */
+  --color-ochre: #7E641C;
+  --color-ochre-tint: #F1ECDB;
+  --color-bark: #6E5A3E;
+
+  /* NEUTRALS */
+  --color-page: #F4F6F1;
+  --color-surface: #FFFFFF;
+  --color-hairline: #E2E7DE;
+  --color-tick-off: #DCE3D8;
+  --color-rule: #D5DCD0;
+  --color-muted: #5B655D;
+  --color-body: #3C463E;
+  --color-ink: #131A15;
+
+  /* SEMANTIC */
+  --status-lc: #2C5F4C;
+  --status-nt: #7E641C;
+  --status-vu: #A15C1B;
+  --status-en: #8C3A16;
+  --status-cr: #6E1F12;
+
+  /* ON DARK */
+  --color-night: #0F1512;
+  --color-night-rule: #33403A;
+  --color-night-muted: #5A6B62;
+  --color-night-text: #C8D3C6;
+
+  /* PLATE GROUNDS */
+  --plate-sage: #E7EDE4;
+  --plate-frond: #E4EBE0;
+  --plate-stone: #EAE7DE;
+  --plate-litter: #EDE7DC;
+  --plate-water: #E2E9E7;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --background: #f4f6f1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(1.00rem, calc(0.952rem + 0.238vw), 1.25rem);
+@layer base {
+  body {
+    background: var(--color-page);
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+    }
+
+    h1 {
+      color: var(--color-ink);
+      font-size: clamp(1.80rem, calc(1.714rem + 0.429vw), 2.25rem);
+    }
+
+    h2 {
+      font-size: clamp(2.00rem, calc(1.62rem + 1.88vw), 2.89rem);
+    }
+
+    hr {
+      color: var(--color-hairline);
+    }
+
+    .tagline {
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-size: clamp(.5rem, calc(0.752rem + 0.238vw), 1.25rem);
+    }
+
+    .nav-button {
+      width: clamp(1rem, 15vw, 6rem);
+      height: clamp(1rem, 15vw, 6rem);
+    }
+
+    .card-component {
+      width: clamp(18.75rem, 80vw, 37.5rem);
+    }
   }
+}
 
-  h1 {
-    font-size: clamp(1.80rem, calc(1.714rem + 0.429vw), 2.25rem);
-  }
+@layer blocks {
+  body {
+    .masthead-wordmark {
+      color: var(--color-canopy);
+      font-family: "Plex Sans Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 21px;
+    }
 
-  h2 {
-    font-size: clamp(2.00rem, calc(1.62rem + 1.88vw), 2.89rem);
-  }
+    .menu-button {
+      border: 1px solid var(--color-rule);
+      stroke: 1.8px var(--color-canopy);
+    }
 
-  .label {
-    text-transform: uppercase;
-    font-size: clamp(.5rem, calc(0.752rem + 0.238vw), 1.25rem);
-  }
+    .masthead-tagline {
+      color: var(--color-muted);
+      font-family: "Plex Mono", sans-serif;
+      font-size: 8.5px;
+    }
 
-  .nav-button {
-    width: clamp(1rem, 15vw, 6rem);
-    height: clamp(1rem, 15vw, 6rem);
-  }
+    .masthead-rule {
+      color: var(--color-canopy);
+      border: 1.5px solid;
+    }
 
-  .card-component {
-    width: clamp(18.75rem, 50vw, 37.5rem);
+    .eyebrow {
+      color: var(--color-moss);
+      font-family: "Plex Mono", sans-serif;
+      font-size: 9.5px;
+    }
+
+    .page-title {
+      color: var(--color-ink);
+      font-family: "Plex Sans", sans-serif;
+      font-weight: 700;
+      font-size: 38px;
+    }
+
+    .intro-paragraph {
+      color: var(--color-body);
+      font-family: "Plex Serif", sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    .filter-chips {
+      color: var(--color-muted);
+      border: 1px solid var(--color-rule);
+    }
+
+    .filter-chips:active {
+      color: var(--color-page);
+      background: var(--color-canopy);
+    }
+
+    .filter-bar-rule {
+      color: 1px solid var(--color-hairline);
+    }
+
+    .specimen-tag {
+      color: var(--color-page);
+      background: var(--color-ink);
+    }
+
+    .status-badge {
+      color: var(--status-lc);
+      border: var(--status-lc);
+      background: var(--color-surface);
+    }
+
+    .species-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-rule);
+    }
+
+    .common-name {
+      color: var(--color-ink);
+      font-family: "Plex Sans Condensed", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .scientific-name {
+      color: var(--color-muted);
+      font-family: "Plex Serif", sans-serif;
+      font-weight: 400;
+      font-size: 14.5px;
+    }
+
+    .blurb {
+      color: var(--color-body);
+      font-family: "Plex Serif", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .habitat-chip {
+      font-family: "Plex Mono", sans-serif;
+      font-size: 10.5px;
+      border: 1px solid var(--color-rule);
+    }
+
+    .card-divider {
+      border: 1px solid var(--color-hairline);
+    }
+
+    .size-text {
+      color: var(--color-muted);
+      font-family: "Plex Mono", sans-serif;
+      font-size: 11px;
+    }
   }
 }

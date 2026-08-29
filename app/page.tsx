@@ -6,14 +6,14 @@ export default function Home() {
 
   return (
     <main className="flex flex-col gap-5 w-full">
-      <div className="flex gap-5 label">
+      <div className="text-moss flex gap-5">
         <p>12 specimens</p>
         <p>.</p>
         <p>revised aug 2026</p>
       </div>
 
       <div>
-        <h2>What lives beneath the canopy</h2>
+        <h1>What lives beneath the canopy</h1>
         <p>Twelve species of the eastern decidous woodland, described for identification in the field.</p>
       </div>
 

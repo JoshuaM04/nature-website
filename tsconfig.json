@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/utilities/sum.ts", "app/tests/sum.test.ts"  ],
+, "app/utilities/sum.ts", "app/tests/sum.test.ts", "app/utilities/data.js"  ],
   "exclude": ["node_modules"]
 }
