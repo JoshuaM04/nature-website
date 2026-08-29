@@ -1,11 +1,20 @@
 import { data } from '../utilities/data';
 
-export default function Card() {
+interface CardProps {
+    activeHabitat: string;
+}
+
+export default function Card({activeHabitat}: CardProps) {
+    const visible = 
+        activeHabitat === "ALL"
+        ? data
+        : data.filter((item) => item.labels.includes(activeHabitat.toLowerCase()));
+
     return (
         <div className="card-component">
             {
-                data.map((item, index) => (
-                    <div key={index} className="species-card flex flex-col gap-5 border p-5">
+                visible.map((item) => (
+                    <div key={item.title} className="species-card flex flex-col gap-5 border p-5">
                         <section className="img-container -ml-5 -mr-5 -mt-5 relative">
                             <img className="w-full" src={item.image} alt={item.image} />
 

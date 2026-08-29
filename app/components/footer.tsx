@@ -1,6 +1,7 @@
 export default function Footer() {
     return (
-        <footer className="flex flex-col gap-2 w-full p-5 mt-auto">
+        <footer className="footer-rule flex flex-col gap-2 w-full p-5 border-t mt-auto">
+
             <h3 className="footer-wordmark">Understory</h3>
             
             <ul className="footer-links">

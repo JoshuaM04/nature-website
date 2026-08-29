@@ -221,7 +221,7 @@
     }
 
     .footer-rule {
-      color: var(--color-canopy);
+      border-top-color: var(--color-canopy);
     }
 
     .footer-wordmark {
