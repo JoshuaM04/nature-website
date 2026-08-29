@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Slab:wght@100..900&family=Share+Tech&display=swap');
 @import "tailwindcss";
 
-:root {
-
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -71,6 +67,7 @@
     h1 {
       color: var(--color-ink);
       font-size: clamp(1.80rem, calc(1.714rem + 0.429vw), 2.25rem);
+      line-height: 100%;
     }
 
     h2 {
@@ -92,8 +89,15 @@
       height: clamp(1rem, 15vw, 6rem);
     }
 
+    .species-card {
+      max-width: 500px;
+    }
+
     .card-component {
-      width: clamp(18.75rem, 80vw, 37.5rem);
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
     }
   }
 }
@@ -114,17 +118,18 @@
 
     .masthead-tagline {
       color: var(--color-muted);
+      text-transform: uppercase;
       font-family: "Plex Mono", sans-serif;
       font-size: 8.5px;
     }
 
     .masthead-rule {
-      color: var(--color-canopy);
-      border: 1.5px solid;
+      border-bottom: 1.5px solid var(--color-canopy);;
     }
 
     .eyebrow {
       color: var(--color-moss);
+      text-transform: uppercase;
       font-family: "Plex Mono", sans-serif;
       font-size: 9.5px;
     }
@@ -146,25 +151,27 @@
     .filter-chips {
       color: var(--color-muted);
       border: 1px solid var(--color-rule);
+      min-width: fit-content;
+      max-height: 40px;
     }
 
-    .filter-chips:active {
+    .filter-chips-active {
       color: var(--color-page);
       background: var(--color-canopy);
     }
 
     .filter-bar-rule {
-      color: 1px solid var(--color-hairline);
+      border-color: var(--color-hairline);
     }
 
     .specimen-tag {
       color: var(--color-page);
-      background: var(--color-ink);
+      background: rgb(from var(--color-ink) r g b / 74%);
     }
 
     .status-badge {
       color: var(--status-lc);
-      border: var(--status-lc);
+      border: 1px solid var(--status-lc);
       background: var(--color-surface);
     }
 
@@ -183,6 +190,7 @@
     .scientific-name {
       color: var(--color-muted);
       font-family: "Plex Serif", sans-serif;
+      font-style: italic;
       font-weight: 400;
       font-size: 14.5px;
     }
@@ -195,19 +203,41 @@
     }
 
     .habitat-chip {
+      color: var(--color-muted);
+      text-transform: uppercase;
       font-family: "Plex Mono", sans-serif;
       font-size: 10.5px;
       border: 1px solid var(--color-rule);
     }
 
     .card-divider {
-      border: 1px solid var(--color-hairline);
+      border-color: var(--color-hairline);
     }
 
     .size-text {
       color: var(--color-muted);
       font-family: "Plex Mono", sans-serif;
       font-size: 11px;
+    }
+
+    .footer-rule {
+      color: var(--color-canopy);
+    }
+
+    .footer-wordmark {
+      color: var(--color-canopy);
+      font-family: "Plex Sans Condensed", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-family: "Plex Mono", sans-serif;
+      font-size: 9.5px;
+      display: flex;
+      gap: 1rem;
     }
   }
 }

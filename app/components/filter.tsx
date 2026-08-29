@@ -11,7 +11,7 @@ export default function Filter() {
                 buttons.map((item, index) => (
                    <button 
                    onClick={() => setActiveButton(item)}
-                   className={`border pt-2 pb-2 pl-4 pr-4 ${activeButton === item ? 'text-white bg-green-900' : ''}`}
+                   className={`filter-chips pt-2 pb-2 pl-4 pr-4 ${activeButton === item ? 'filter-chips-active' : ''}`}
                     key={index}>
                         {item}
                     </button>
