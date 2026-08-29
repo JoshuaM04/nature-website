@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Filter from './components/filter';
+import Card from './components/card';
 
 export default function Home() {
 
@@ -18,9 +19,9 @@ export default function Home() {
 
       <Filter />
       
-      <hr className="-ml-5 -mr-5"/>
+      <hr className="-ml-5 -mr-5 hairline-200"/>
 
-
+      <Card />
     </main>
   );
 }

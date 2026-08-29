@@ -6,7 +6,7 @@ export default function Filter() {
     const [activeButton, setActiveButton] = useState('');
 
     return (
-        <div className="flex gap-5">
+        <div className="flex gap-5 overflow-x-auto">
             {
                 buttons.map((item, index) => (
                    <button 

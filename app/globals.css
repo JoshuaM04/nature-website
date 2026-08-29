@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f4f6f1;
 }
 
 @theme inline {
@@ -11,9 +11,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #ededed;
+    --background: #f4f6f1;
   }
 }
 
@@ -32,7 +32,7 @@ body {
   }
 
   h2 {
-    font-size: clamp(1.50rem, calc(1.429rem + 0.357vw), 1.88rem);
+    font-size: clamp(2.00rem, calc(1.62rem + 1.88vw), 2.89rem);
   }
 
   .label {
@@ -43,5 +43,9 @@ body {
   .nav-button {
     width: clamp(1rem, 15vw, 6rem);
     height: clamp(1rem, 15vw, 6rem);
+  }
+
+  .card-component {
+    width: clamp(18.75rem, 50vw, 37.5rem);
   }
 }
