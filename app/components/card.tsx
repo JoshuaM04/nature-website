@@ -31,29 +31,33 @@ export default function Card({activeHabitat}: CardProps) {
                             </div>
                         </section>
 
-                        <section className="flex flex-col gap-5">
-                            <div className="flex flex-col">
-                                <span className="common-name">{item.title}</span>
-                                <span className="scientific-name">{item.subtitle}</span>
+                        <section className="flex flex-col justify-between gap-5 h-full">
+                            <div className="flex flex-col gap-5">
+                                <div className="flex flex-col">
+                                    <span className="common-name">{item.title}</span>
+                                    <span className="scientific-name">{item.subtitle}</span>
+                                </div>
+
+                                <div className="blurb">
+                                    {item.body}
+                                </div>
                             </div>
 
-                            <div className="blurb">
-                                {item.body}
+                            <div className="flex flex-col gap-5"> 
+                                <div className="flex flex-wrap gap-2">
+                                    {
+                                        item.labels.map((label, labelIndex) => (
+                                            <div key={labelIndex} className="habitat-chip pt-1 pb-1 pl-3 pr-3">
+                                                {label}
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+
+                                <hr className="card-divider" />
+                                
+                                <div className="size-text">{item.range}</div>
                             </div>
-
-                            <div className="flex flex-wrap gap-2">
-                                {
-                                    item.labels.map((label, labelIndex) => (
-                                        <div key={labelIndex} className="habitat-chip pt-1 pb-1 pl-3 pr-3">
-                                            {label}
-                                        </div>
-                                    ))
-                                }
-                            </div>
-
-                            <hr className="card-divider" />
-
-                            <div className="size-text">{item.range}</div>
                         </section>
                     </div>
                 ))
