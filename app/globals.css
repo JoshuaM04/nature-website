@@ -84,11 +84,6 @@
       font-size: clamp(.5rem, calc(0.752rem + 0.238vw), 1.25rem);
     }
 
-    .nav-button {
-      width: clamp(1rem, 15vw, 6rem);
-      height: clamp(1rem, 15vw, 6rem);
-    }
-
     .species-card {
       max-width: 500px;
     }
