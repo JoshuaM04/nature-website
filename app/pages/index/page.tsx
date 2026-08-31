@@ -22,7 +22,7 @@ export default function Index() {
             <p className="intro-paragraph">Twelve species of the eastern decidous woodland, described for identification in the field.</p>
         </header>
 
-        <main className="flex flex-col gap-5 w-full">
+        <main className="flex flex-col items-center gap-5 w-full">
             <Filter 
                 habitats={habitats}
                 activeHabitat={activeHabitat}

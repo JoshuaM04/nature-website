@@ -21,7 +21,7 @@ export default function Gallery() {
                 <p className="intro-paragraph">Every plate at the proportions it was shot.</p>   
             </header>
 
-            <main className="flex flex-col gap-5 w-full">
+            <main className="flex flex-col items-center gap-5 w-full">
                 <Filter
                     habitats={habitats}
                     activeHabitat={activeHabitat}
