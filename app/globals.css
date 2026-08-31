@@ -126,7 +126,11 @@
     }
 
     .masthead-rule {
-      border-bottom: 1.5px solid var(--color-canopy);;
+      border-bottom: 1.5px solid var(--color-canopy);
+    }
+
+    .masthead-rule-light {
+      border-bottom: 1.5px solid var(--color-hairline);
     }
 
     .row-index {

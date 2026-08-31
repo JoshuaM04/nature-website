@@ -30,8 +30,6 @@ export default function Index() {
 
             />
 
-            <hr className="filter-bar-rule -ml-5 -mr-5" />
-
             <Card
                 activeHabitat={activeHabitat}
             />
