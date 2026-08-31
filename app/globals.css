@@ -122,6 +122,28 @@
       border-bottom: 1.5px solid var(--color-canopy);;
     }
 
+    .row-index {
+      color: var(--color-muted);
+      font-family: "Plex Mono", sans-serif;
+      font-size: 11px;
+    }
+
+    .row-label-inactive {
+      color: var(--color-ink);
+      background-color: var(--color-page);
+      font-family: 'Plex Mono', sans-serif;
+      font-weight: 700;
+      font-size: 27px;
+    }
+
+    .row-label-active {
+      color: var(--color-moss);
+      background-color: var(--color-surface);
+      font-family: 'Plex Mono', sans-serif;
+      font-weight: 700;
+      font-size: 27px;
+    }
+
     .eyebrow {
       color: var(--color-moss);
       text-transform: uppercase;

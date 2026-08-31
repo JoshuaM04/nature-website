@@ -1,5 +1,6 @@
 'use client';
 import { DialogTrigger, ModalOverlay, Modal, Dialog, Heading, Button} from 'react-aria-components';
+import Footer from './footer';
 import { useState } from 'react';
 
 export default function Navigation() {
@@ -41,38 +42,42 @@ export default function Navigation() {
 
                 <ModalOverlay className="fixed inset-0 z-50 bg-page">
                     <Modal className="w-full h-full">
-                        <Dialog>
-                            <div className="masthead-rule flex justify-between items-center gap-5 p-5 bg-page">
-                                <Heading>
-                                    <a className="masthead-wordmark" href="">Understory</a>
-                                    <p className="masthead-tagline">temperate forest field guide</p>
-                                </Heading>
-
-                                <Button className="menu-button p-2 bg-canopy" slot="close">
-                                    <svg className="w-10 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                    </svg>
-                                </Button>
-                            </div>
-
+                        <Dialog className="flex flex-col justify-between h-full">
                             <div>
-                                {
-                                    routes.map((item, index) => (
-                                        <div 
-                                            onClick={() => setActiveRoute(item.route)}
-                                            className={`${item.route === activeRoute ? 'bg-surface' : 'bg-page'} filter-bar-rule flex justify-between items-center p-5 border-b`} key={index}>
-                                            <div className="flex gap-5">
-                                                <div>{item.number}</div>
-                                                <div>{item.route}</div>
-                                            </div>
+                                <div className="masthead-rule flex justify-between items-center gap-5 p-5 bg-page">
+                                    <Heading>
+                                        <a className="masthead-wordmark" href="">Understory</a>
+                                        <p className="masthead-tagline font-light">temperate forest field guide</p>
+                                    </Heading>
 
-                                            <div className={`${item.route === activeRoute ? 'masthead-tagline block' : 'hidden'}`}>
-                                                Current
+                                    <Button className="menu-button p-2 bg-canopy" slot="close">
+                                        <svg className="w-10 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                    </Button>
+                                </div>
+
+                                <div>
+                                    {
+                                        routes.map((item, index) => (
+                                            <div
+                                                onClick={() => setActiveRoute(item.route)}
+                                                className={`${item.route === activeRoute ? 'row-label-active' : 'row-label-inactive'} filter-bar-rule flex justify-between items-center p-5 border-b`} key={index}>
+                                                <div className="flex items-center gap-5">
+                                                    <div className="row-index">{item.number}</div>
+                                                    <div>{item.route}</div>
+                                                </div>
+
+                                                <div className={`${item.route === activeRoute ? 'masthead-tagline block text-moss' : 'hidden'}`}>
+                                                    Current
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))
-                                }
+                                        ))
+                                    }
+                                </div>
                             </div>
+
+                            <Footer />
                         </Dialog>
                     </Modal>
                 </ModalOverlay>
