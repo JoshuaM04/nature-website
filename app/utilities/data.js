@@ -96,3 +96,15 @@ export const galleryData = [
         labels: ['canopy']
     }
 ];
+
+export const fieldData = [
+    {
+        title: 'Countersinging at dusk',
+        subtitle: 'Wood Thrush',
+        number: 'FN. 01',
+        image: '/species-cards/wood-thrush.jpg',
+        body: 'Two males holding adjacent territories along the same seep.',
+        labels: ['cc', 'sub', 'ch', 'ad'],
+        time: '1 min 12 s'
+    }
+];
