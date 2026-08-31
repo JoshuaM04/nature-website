@@ -1,5 +1,6 @@
 'use client';
 import Filter from '../../components/filter';
+import GalleryCard from '../../components/gallery';
 import { useState} from 'react';
 
 export default function Gallery() {
@@ -20,11 +21,17 @@ export default function Gallery() {
                 <p className="intro-paragraph">Every plate at the proportions it was shot.</p>   
             </header>
 
-            <main>
+            <main className="flex flex-col gap-5 w-full">
                 <Filter
                     habitats={habitats}
                     activeHabitat={activeHabitat}
                     setActiveHabitat={setActiveHabitat}
+                />
+                
+                <hr className="filter-bar-rule -ml-5 -mr-5" />
+
+                <GalleryCard
+                    activeHabitat={activeHabitat}
                 />
             </main>
         </div>

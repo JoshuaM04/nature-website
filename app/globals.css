@@ -144,6 +144,17 @@
       font-size: 27px;
     }
 
+    .plate-name {
+      color: var(--color-page);
+      font-weight: 600;
+    }
+
+    .plate-stamp {
+      color: var(--color-night-text);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
     .eyebrow {
       color: var(--color-moss);
       text-transform: uppercase;
