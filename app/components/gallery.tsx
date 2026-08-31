@@ -12,7 +12,7 @@ export default function GalleryCard({ activeHabitat }: GalleryProps) {
     }
 
     return (
-        <div className="gallery-component flex flex-col gap-5">
+        <div className="gallery-component">
           {
             visible.map((item) => (
                 <div key={item.title} className="species-card flex flex-col gap-5 border relative">
@@ -22,13 +22,15 @@ export default function GalleryCard({ activeHabitat }: GalleryProps) {
 
                     <img className="w-full" src={item.image} alt={item.image} />
 
-                    <p className="plate-name absolute left-5 bottom-0">
+                    <p className="plate-name absolute z-1 left-5 bottom-2">
                         {item.title}
                     </p>
 
-                    <p className="plate-stamp absolute right-5 bottom-0">
+                    <p className="plate-stamp absolute z-1 right-5 bottom-2">
                         {item.stamp}
                     </p>
+
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent to-20%"></div>
                 </div>
             ))
           }  
