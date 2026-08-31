@@ -11,8 +11,8 @@ interface FilterProps {
 export default function Filter({habitats, activeHabitat, setActiveHabitat}: FilterProps) {
 
     return (
-        <div className="masthead-rule-light filter-component flex flex-col gap-5 pl-5 pr-5 pb-5 -mx-5 self-stretch">
-            <div className="flex gap-5 overflow-x-auto">
+        <div className="masthead-rule-light filter-component flex flex-col gap-5 pl-5 pr-5 -mx-5 self-stretch">
+            <div className="flex gap-5 overflow-x-auto pb-5">
                 {
                     habitats.map((item, index) => (
                        <button
