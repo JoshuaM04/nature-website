@@ -41,56 +41,56 @@ export const galleryData = [
     },
     {
         title: 'Leaf Litter',
-        number: 'PL. 03',
+        number: 'PL. 02',
         image: '/gallery-cards/leaf-litter.jpg',
         stamp: 'Forest Floor, 08:05',
         labels: ['forest floor']
     },
     {
         title: 'Hemlock Bark',
-        number: 'PL. 04',
+        number: 'PL. 03',
         image: '/gallery-cards/hemlock-bark.jpg',
         stamp: 'Canopy 09:22',
         labels: ['canopy']
     },
     {
         title: 'Turkey Tail',
-        number: 'PL. 05',
+        number: 'PL. 04',
         image: '/species-cards/turkey-tail.jpg',
         stamp: 'Deadwood, 10:14',
         labels: ['deadwood']
     },
     {
         title: 'Sheet Moss',
-        number: 'PL. 06',
+        number: 'PL. 05',
         image: '/gallery-cards/sheet-moss.jpg',
         stamp: 'Deadwood, 10:02',
         labels: ['deadwood']
     },
     {
         title: 'Barred Owl',
-        number: 'PL. 07',
+        number: 'PL. 06',
         image: '/gallery-cards/barred-owl.jpg',
         stamp: 'Canopy, 11:48',
         labels: ['canopy']
     },
     {
         title: 'Cold Seep',
-        number: 'PL. 08',
+        number: 'PL. 07',
         image: '/gallery-cards/cold-seep.jpg',
         stamp: 'Streamside, 12:30',
         labels: ['streamside'],
     },
     {
         title: 'Red Eft',
-        number: 'PL. 09',
+        number: 'PL. 08',
         image: '/gallery-cards/red-eft.jpg',
         stamp: 'Streamside, 13:16',
         labels: ['streamside']
     },
     {
         title: 'Hemlock Spray',
-        number: 'PL. 10',
+        number: 'PL. 09',
         image: '/species-cards/eastern-hemlock.jpg',
         stamp: 'Canopy, 14:03',
         labels: ['canopy']
