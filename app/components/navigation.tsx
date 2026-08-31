@@ -47,7 +47,7 @@ export default function Navigation() {
                                 <div className="masthead-rule flex justify-between items-center gap-5 p-5 bg-page">
                                     <Heading>
                                         <a className="masthead-wordmark" href="">Understory</a>
-                                        <p className="masthead-tagline font-light">temperate forest field guide</p>
+                                        <p className="masthead-tagline">temperate forest field guide</p>
                                     </Heading>
 
                                     <Button className="menu-button p-2 bg-canopy" slot="close">
