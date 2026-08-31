@@ -12,7 +12,7 @@ export default function Filter({habitats, activeHabitat, setActiveHabitat}: Filt
 
     return (
         <div className="filter-component flex flex-col gap-5 w-full">
-            <div className="flex gap-5 overflow-x-auto scrollbar-thumb-canopy bpt-2 pb-2">
+            <div className="flex gap-5 overflow-x-auto bpt-2 pb-2">
                 {
                     habitats.map((item, index) => (
                        <button
