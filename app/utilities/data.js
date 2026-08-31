@@ -1,4 +1,4 @@
-export const data = [
+export const indexData = [
     {
         title: 'Wood Thrush',
         subtitle: 'Hylocichla mustelina',
@@ -28,5 +28,11 @@ export const data = [
         body: 'Overlapping brackets banded in fawn, rust and grey, fruiting year-round on fallen hardwood. Colour varies with the light the log receives, so no two shelves on the same trunk match exactly.',
         labels: ['deadwood'],
         range: '4 to 10 cm'
+    }
+];
+
+export const galleryData = [
+    {
+
     }
 ];

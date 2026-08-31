@@ -1,25 +1,30 @@
 'use client';
 import { DialogTrigger, ModalOverlay, Modal, Dialog, Heading, Button} from 'react-aria-components';
 import Footer from './footer';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Navigation() {
     let routes = [
         {
             number: '01',
-            route: 'Index',
+            page: 'Index',
+            route: '/pages/index'
         },
         {
             number: '02',
-            route: 'Gallery',
+            page: 'Gallery',
+            route: '/pages/gallery'
         },
         {
             number: '03',
-            route: 'Field Notes',
+            page: 'Field Notes',
+            route: '/pages/fieldnotes'
         },
         {
             number: '04',
-            route: 'About',
+            page: 'About',
+            route: '/pages/about'
         }
     ];
 
@@ -60,18 +65,19 @@ export default function Navigation() {
                                 <div>
                                     {
                                         routes.map((item, index) => (
-                                            <div
-                                                onClick={() => setActiveRoute(item.route)}
-                                                className={`${item.route === activeRoute ? 'row-label-active' : 'row-label-inactive'} filter-bar-rule flex justify-between items-center p-5 border-b`} key={index}>
+                                            <Link
+                                                href={item.route}
+                                                onClick={() => setActiveRoute(item.page)}
+                                                className={`${item.page === activeRoute ? 'row-label-active' : 'row-label-inactive'} filter-bar-rule flex justify-between items-center p-5 border-b`} key={index}>
                                                 <div className="flex items-center gap-5">
                                                     <div className="row-index">{item.number}</div>
-                                                    <div>{item.route}</div>
+                                                    <div>{item.page}</div>
                                                 </div>
 
-                                                <div className={`${item.route === activeRoute ? 'masthead-tagline block text-moss' : 'hidden'}`}>
+                                                <div className={`${item.page === activeRoute ? 'masthead-tagline block text-moss' : 'hidden'}`}>
                                                     Current
                                                 </div>
-                                            </div>
+                                            </Link>
                                         ))
                                     }
                                 </div>

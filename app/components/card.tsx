@@ -1,4 +1,4 @@
-import { data } from '../utilities/data';
+import { indexData } from '../utilities/data';
 
 interface CardProps {
     activeHabitat: string;
@@ -7,8 +7,8 @@ interface CardProps {
 export default function Card({activeHabitat}: CardProps) {
     const visible = 
         activeHabitat === "ALL"
-        ? data
-        : data.filter((item) => item.labels.includes(activeHabitat.toLowerCase()));
+        ? indexData
+        : indexData.filter((item) => item.labels.includes(activeHabitat.toLowerCase()));
 
     if (visible.length === 0) {
         return <p className="blurb">No species recorded in this habitat.</p>

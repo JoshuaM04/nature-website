@@ -2,12 +2,16 @@
 import Card from './card';
 import { useState } from 'react';
 
-export default function Filter() {
-    const habitats = ['ALL', 'CANOPY', 'UNDERSTORY', 'FOREST FLOOR'];
-    const [activeHabitat, setActiveHabitat] = useState('ALL');
+interface FilterProps {
+    habitats: Array<string>;
+    activeHabitat: string;
+    setActiveHabitat: Function;
+}
+
+export default function Filter({habitats, activeHabitat, setActiveHabitat}: FilterProps) {
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="filter-component flex flex-col gap-5">
             <div className="flex gap-5 overflow-x-auto">
                 {
                     habitats.map((item, index) => (
@@ -20,12 +24,6 @@ export default function Filter() {
                     ))
                 }
             </div>
-            
-            <hr className="filter-bar-rule -ml-5 -mr-5" />
-
-            <Card
-                    activeHabitat={activeHabitat}
-                />
         </div>
     );
 }
