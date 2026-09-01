@@ -149,6 +149,21 @@ colour scheme would be.
 I then referenced both of those as I built: the infrastructure, the colour tokens, the components
 and the pages are all work I did against that documentation and that design.
 
+This is the style sheet the UI/UX designer produced, and the file I worked from when I built the
+colour tokens:
+
+<details>
+<summary><b>Design tokens style sheet</b></summary>
+
+<img src="docs/style-sheet.png" alt="Understory design token style sheet: colour, typography, space scale, layout and components" width="100%">
+
+</details>
+
+The finished site is not a one to one match with it. I deviated from the sheet during development
+because I ran into problems piecing parts of it together in live development, and it moved further
+still once Claude made visual changes to fix responsiveness and to make room for the live resource
+fetching. The colour tokens are the part that survived most intact.
+
 ### Where AI came in
 
 I started off building the application manually, and once it was working I realised I wanted more
@@ -199,8 +214,11 @@ at. A 404 that turned out to be a corrupted Next.js type cache rather than a rou
 video poster that came out black because the clip fades in from nothing. An image transfer that got
 thrown away because the bytes did not decode cleanly.
 
-The honest downside is that the codebase moved faster than my understanding of it in places. I can
-read all of it, but there are files I did not write line by line, and that is a real difference.
+The honest downside is that the codebase moved faster than my understanding of it in places, and the
+live resource fetching is the clearest example. I can read that code and follow what it is doing,
+but I do not fully understand it, and I could not sit down and write it again on my own. That is a
+real difference from the parts I built myself, and it is the main reason my next project is a
+smaller one.
 
 ---
 
