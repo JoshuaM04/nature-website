@@ -13,7 +13,7 @@ interface GalleryProps {
     emptyMessage?: string;
 }
 
-const plate = "species-card flex flex-col gap-5 border relative";
+const plate = "species-card @container flex flex-col gap-5 border relative";
 
 export default function GalleryCard({ items, activeBiome, emptyMessage = "No species recorded in this habitat." }: GalleryProps) {
     const visible = activeBiome === 'ALL' ? items : items.filter((item) => item.labels.includes(activeBiome.toLowerCase()));
@@ -34,12 +34,12 @@ export default function GalleryCard({ items, activeBiome, emptyMessage = "No spe
 
                         <img className="w-full" src={item.image} alt={item.title} />
 
-                        <div className="absolute z-1 left-5 right-5 bottom-2 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
+                        <div className="absolute z-1 left-5 right-5 bottom-2 flex flex-col gap-1 @md:flex-row @md:items-end @md:justify-between @md:gap-5">
                             <p className="plate-name">
                                 {item.title}
                             </p>
 
-                            <p className="plate-stamp sm:text-right">
+                            <p className="plate-stamp @md:text-right">
                                 {item.stamp}
                             </p>
                         </div>
