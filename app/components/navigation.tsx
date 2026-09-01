@@ -36,7 +36,7 @@ export default function Navigation() {
         <div className="masthead-rule sticky top-0 z-40 bg-page w-full">
             <div className="shell flex justify-between items-center gap-5 p-5">
             <div>
-                <a className="masthead-wordmark" href="">Understory</a>
+                <Link className="masthead-wordmark" href="/">Understory</Link>
                 <p className="masthead-tagline">a field guide to the living world</p>
             </div>
 
@@ -67,7 +67,7 @@ export default function Navigation() {
                             <div>
                                 <div className="masthead-rule flex justify-between items-center gap-5 p-5 bg-page">
                                     <Heading>
-                                        <a className="masthead-wordmark" href="">Understory</a>
+                                        <Link className="masthead-wordmark" href="/">Understory</Link>
                                         <p className="masthead-tagline">a field guide to the living world</p>
                                     </Heading>
 

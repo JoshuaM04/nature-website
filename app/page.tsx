@@ -1,31 +1,42 @@
 import Link from 'next/link';
 import { Band, Hero, SectionHead } from './components/band';
+import { fetchPlates } from './utilities/commons';
 
+/* Each way in is shown with a photograph of the ground it covers, taken from
+   the gallery's own read, so the pictures on the front are the same plates the
+   guide holds rather than drawings standing in for them. The illustration is
+   the fallback for a ground the gallery came back empty on. */
 const sections = [
     {
         label: 'Index',
-        title: 'What the woodland is doing',
+        title: 'What the living world is doing',
         body: 'The newest journal posts from the iNaturalist community, filed by the subject they take up.',
         href: '/pages/index',
-        image: '/species-cards/wood-thrush.jpg'
+        ground: 'forest',
+        fallback: '/species-cards/wood-thrush.jpg'
     },
     {
         label: 'Gallery',
         title: 'Every plate at the size it was shot',
         body: 'Openly licensed photographs of ocean, mountain, river, forest and the rest, credited to the photographer.',
         href: '/pages/gallery',
-        image: '/gallery-cards/hemlock-bark.jpg'
+        ground: 'ocean',
+        fallback: '/gallery-cards/hemlock-bark.jpg'
     },
     {
         label: 'Field notes',
         title: 'Recordings, captioned by hand',
         body: 'Short clips from the field, each with the transcript read back out of its own captions.',
         href: '/pages/fieldnotes',
-        image: '/gallery-cards/cold-seep.jpg'
+        ground: 'river',
+        fallback: '/gallery-cards/cold-seep.jpg'
     }
 ];
 
-export default function Home() {
+export default async function Home() {
+    const plates = await fetchPlates();
+    const plateFor = (ground: string) => plates.find((plate) => plate.labels.includes(ground))?.image;
+
     return (
         <div className="flex flex-col w-full">
             <Hero
@@ -46,9 +57,13 @@ export default function Home() {
                     <div className="card-component">
                         {
                             sections.map((section) => (
-                                <Link key={section.label} href={section.href} className="species-card flex flex-col gap-5 border p-5">
-                                    <div className="img-container plate-frame -ml-5 -mr-5 -mt-5">
-                                        <img className="w-full aspect-[4/3] object-cover" src={section.image} alt={section.title} />
+                                <Link key={section.label} href={section.href} className="species-card plain-card flex flex-col gap-5 border p-5">
+                                    <div className="img-container -ml-5 -mr-5 -mt-5">
+                                        <img
+                                            className="w-full aspect-[4/3] object-cover"
+                                            src={plateFor(section.ground) ?? section.fallback}
+                                            alt={section.title}
+                                        />
                                     </div>
 
                                     <div className="flex flex-col gap-3 grow">
@@ -64,16 +79,15 @@ export default function Home() {
                 </div>
             </Band>
 
-            <Band tone="green" tight>
-                <div className="centred-block flex flex-col items-center gap-5">
-                    <h2 className="display-title text-3xl">You cannot protect what you cannot name</h2>
+            <Band>
+                <div className="centred-block flex flex-col items-center gap-5 rule-above pt-12">
+                    <SectionHead
+                        eyebrow="The argument"
+                        title="You cannot protect what you cannot name"
+                        intro="The guide is organised by ecosystem rather than by taxonomy, because that is how the living world actually works."
+                    />
 
-                    <p className="lead-text">
-                        The guide is organised by habitat rather than by taxonomy, because that is how the
-                        woodland actually works.
-                    </p>
-
-                    <Link href="/pages/about" className="button button-light mt-2">
+                    <Link href="/pages/about" className="button button-solid mt-2">
                         About this guide
                     </Link>
                 </div>
