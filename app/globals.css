@@ -55,6 +55,54 @@
   }
 }
 
+/* Scrollbars are part of the furniture, so they are dressed like it. Firefox
+   takes the two-keyword form, WebKit the pseudo-elements. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-moss) var(--color-hairline);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-hairline);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-moss);
+  border: 2px solid var(--color-hairline);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-canopy);
+}
+
+/* The filter rail carries a slimmer one, since it sits under the chips. */
+.filter-rail {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule) transparent;
+}
+
+.filter-rail::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filter-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filter-rail::-webkit-scrollbar-thumb {
+  background: var(--color-rule);
+  border: 0;
+}
+
+.filter-rail:hover::-webkit-scrollbar-thumb {
+  background: var(--color-moss);
+}
+
 @layer base {
   body {
     background: var(--color-page);

@@ -33,11 +33,11 @@ export default function Navigation() {
     const pathname = usePathname();
 
     return (
-        <div className="masthead-rule w-full">
+        <div className="masthead-rule sticky top-0 z-40 bg-page w-full">
             <div className="shell flex justify-between items-center gap-5 p-5">
             <div>
                 <a className="masthead-wordmark" href="">Understory</a>
-                <p className="masthead-tagline">temperate forest field guide</p>
+                <p className="masthead-tagline">a field guide to the living world</p>
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
@@ -68,7 +68,7 @@ export default function Navigation() {
                                 <div className="masthead-rule flex justify-between items-center gap-5 p-5 bg-page">
                                     <Heading>
                                         <a className="masthead-wordmark" href="">Understory</a>
-                                        <p className="masthead-tagline">temperate forest field guide</p>
+                                        <p className="masthead-tagline">a field guide to the living world</p>
                                     </Heading>
 
                                     <Button className="menu-button p-2 bg-canopy" slot="close">

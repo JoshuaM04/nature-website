@@ -29,9 +29,9 @@ export default function Home() {
     return (
         <div className="flex flex-col w-full">
             <Hero
-                eyebrow={['Eastern deciduous woodland']}
-                title="What lives beneath the canopy"
-                intro="A field guide to one patch of temperate forest, read in layers: the canopy, the understory, the floor, the deadwood and the water running through it."
+                eyebrow={['Ocean to new rock']}
+                title="What lives out there"
+                intro="A field guide to the ground the living world occupies, from open water to new rock, and to the people who photograph it."
                 action={{ label: 'Start with the index', href: '/pages/index' }}
             />
 

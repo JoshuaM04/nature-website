@@ -1,18 +1,16 @@
 'use client';
-import Card from './card';
-import { useState } from 'react';
 
 interface FilterProps {
     habitats: Array<string>;
     activeHabitat: string;
-    setActiveHabitat: Function;
+    setActiveHabitat: (value: string) => void;
 }
 
 export default function Filter({habitats, activeHabitat, setActiveHabitat}: FilterProps) {
 
     return (
         <div className="masthead-rule-light filter-component flex flex-col gap-5 pl-5 pr-5 -mx-5 self-stretch">
-            <div className="flex gap-5 overflow-x-auto pb-5">
+            <div className="filter-rail flex gap-5 overflow-x-auto pb-4">
                 {
                     habitats.map((item, index) => (
                        <button
