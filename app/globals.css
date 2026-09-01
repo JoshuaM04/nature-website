@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Slab:wght@100..900&family=Share+Tech&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Slab:wght@100..900&family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 @theme inline {
@@ -54,6 +53,38 @@
   :root {
     --background: #f4f6f1;
   }
+}
+
+/* Scrollbars are part of the furniture, so they are dressed like it. Firefox
+   takes the two-keyword form, WebKit the pseudo-elements. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-moss) var(--color-hairline);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-hairline);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-moss);
+  border: 2px solid var(--color-hairline);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-canopy);
+}
+
+/* The rail takes the same bar as the page, so the two read as one system
+   rather than as two different scrollbars that happen to share a site. */
+.filter-rail {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-moss) var(--color-hairline);
 }
 
 @layer base {
@@ -116,7 +147,7 @@
   body {
     .masthead-wordmark {
       color: var(--color-canopy);
-      font-family: "Plex Sans Condensed", sans-serif;
+      font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
       font-weight: 700;
       font-size: 21px;
     }
@@ -124,7 +155,7 @@
     .nav-link {
       color: var(--color-muted);
       text-transform: uppercase;
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 11px;
       letter-spacing: .08em;
       padding-bottom: 3px;
@@ -144,7 +175,7 @@
     .masthead-tagline {
       color: var(--color-muted);
       text-transform: uppercase;
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 8.5px;
     }
 
@@ -158,7 +189,7 @@
 
     .row-index {
       color: var(--color-muted);
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 11px;
     }
 
@@ -192,34 +223,76 @@
     .eyebrow {
       color: var(--color-moss);
       text-transform: uppercase;
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 9.5px;
     }
 
     .page-title {
       color: var(--color-ink);
-      font-family: "Plex Sans", sans-serif;
+      font-family: "IBM Plex Sans", sans-serif;
       font-weight: 700;
       font-size: 38px;
     }
 
     .intro-paragraph {
       color: var(--color-body);
-      font-family: "Plex Serif", sans-serif;
+      font-family: "IBM Plex Serif", Georgia, serif;
       font-weight: 400;
       font-size: 15px;
     }
 
-    .filter-chips {
-      color: var(--color-muted);
+    /* What a recording carries. These sat at eyebrow size with a hairline and
+       disappeared into the cream, so they are lifted onto their own surface
+       and given a mark to read as a badge rather than as a caption. */
+    .feature-badge {
+      color: var(--color-canopy);
+      background: var(--color-surface);
       border: 1px solid var(--color-rule);
-      min-width: fit-content;
-      max-height: 40px;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      transition: border-color .15s ease, color .15s ease;
     }
 
-    .filter-chips-active {
+    .feature-badge:hover {
+      color: var(--color-moss);
+      border-color: var(--color-moss);
+    }
+
+    .feature-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-moss);
+    }
+
+    .filter-chips {
+      color: var(--color-muted);
+      background: var(--color-surface);
+      border: 1px solid var(--color-rule);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      min-width: fit-content;
+      max-height: 40px;
+      transition: color .15s ease, border-color .15s ease, background-color .15s ease;
+    }
+
+    .filter-chips:hover {
+      color: var(--color-canopy);
+      border-color: var(--color-canopy);
+    }
+
+    /* The chosen one is the only solid thing on the row. */
+    .filter-chips-active,
+    .filter-chips-active:hover {
       color: var(--color-page);
       background: var(--color-canopy);
+      border-color: var(--color-canopy);
     }
 
     .filter-bar-rule {
@@ -240,13 +313,25 @@
     .species-card {
       background: var(--color-surface);
       border: 1px solid var(--color-rule);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    /* A card in a stacked grid is headed by a rule, which is the only colour
+       it carries at rest. The gallery is images and takes none of this. */
+    .card-component .species-card {
+      border-top: 3px solid var(--color-moss);
+    }
+
+    .card-component a.species-card:hover {
+      border-color: var(--color-moss);
+      box-shadow: 0 2px 14px rgb(from var(--color-ink) r g b / 8%);
     }
 
     .plate-placeholder {
       background: var(--plate-sage);
       color: var(--color-muted);
       text-transform: uppercase;
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 10.5px;
       letter-spacing: .08em;
     }
@@ -267,14 +352,15 @@
 
     .common-name {
       color: var(--color-ink);
-      font-family: "Plex Sans Condensed", sans-serif;
+      font-family: "IBM Plex Serif", Georgia, serif;
       font-weight: 600;
-      font-size: 22px;
+      font-size: 20px;
+      line-height: 1.3;
     }
 
     .scientific-name {
       color: var(--color-muted);
-      font-family: "Plex Serif", sans-serif;
+      font-family: "IBM Plex Serif", Georgia, serif;
       font-style: italic;
       font-weight: 400;
       font-size: 14.5px;
@@ -282,17 +368,19 @@
 
     .blurb {
       color: var(--color-body);
-      font-family: "Plex Serif", sans-serif;
+      font-family: "IBM Plex Serif", Georgia, serif;
       font-weight: 400;
       font-size: 14px;
     }
 
     .habitat-chip {
-      color: var(--color-muted);
+      color: var(--color-moss);
+      background: var(--color-ochre-tint);
       text-transform: uppercase;
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 10.5px;
-      border: 1px solid var(--color-rule);
+      letter-spacing: .06em;
+      border: 1px solid transparent;
     }
 
     .card-divider {
@@ -301,7 +389,7 @@
 
     .size-text {
       color: var(--color-muted);
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 11px;
     }
 
@@ -311,7 +399,7 @@
 
     .footer-wordmark {
       color: var(--color-canopy);
-      font-family: "Plex Sans Condensed", sans-serif;
+      font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
       font-weight: 600;
       font-size: 14px;
     }
@@ -319,7 +407,7 @@
     .footer-links {
       color: var(--color-muted);
       text-transform: uppercase;
-      font-family: "Plex Mono", sans-serif;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 9.5px;
       display: flex;
       gap: 1rem;
@@ -360,6 +448,225 @@
       .gallery-component > :nth-child(8n + 6) {
         grid-row: span 2;
       }
+    }
+
+    /* A single measure for the whole site. Full-bleed text ran to the width
+       of the window and read as a wall; everything lands on one column now. */
+    .shell {
+      width: 100%;
+      max-width: 76rem;
+      margin-inline: auto;
+    }
+
+    .reading-column {
+      max-width: 44rem;
+    }
+
+    /* Wider than prose, narrower than the page: enough for a thumbnail, a
+       description and a count to read as one row. */
+    .data-column {
+      max-width: 54rem;
+    }
+
+    .section-heading {
+      color: var(--color-ink);
+      font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 1.25;
+    }
+
+    .sub-heading {
+      color: var(--color-ink);
+      font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    .body-text {
+      color: var(--color-body);
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .meta-chip {
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      border: 1px solid var(--color-rule);
+    }
+
+    .rule-above {
+      border-top: 1px solid var(--color-hairline);
+    }
+
+    .data-row {
+      border-bottom: 1px solid var(--color-hairline);
+    }
+
+    .count-note {
+      color: var(--color-moss);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .quiet-note {
+      color: var(--color-muted);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* ---- bands -------------------------------------------------------
+       The page is built from full-bleed horizontal bands that alternate
+       ground: cream, green, or a photograph. Each band keeps its contents
+       on the shared measure. */
+    .band {
+      width: 100%;
+    }
+
+    .band-inner {
+      width: 100%;
+      max-width: 76rem;
+      margin-inline: auto;
+      padding: 4.5rem 1.25rem;
+    }
+
+    .band-tight .band-inner {
+      padding-block: 3rem;
+    }
+
+    .band-cream {
+      background: var(--color-ochre-tint);
+    }
+
+    .band-green {
+      background: var(--color-canopy);
+      color: var(--color-page);
+    }
+
+    .band-green .display-title,
+    .band-green .lead-text {
+      color: var(--color-page);
+    }
+
+    /* Anything bordered or muted has to be restated on the dark ground. */
+    .band-green .meta-chip,
+    .band-green .quiet-note,
+    .band-green .count-note {
+      color: rgb(from var(--color-page) r g b / 78%);
+    }
+
+    .band-green .meta-chip {
+      border-color: rgb(from var(--color-page) r g b / 32%);
+    }
+
+    .band-green .body-text {
+      color: rgb(from var(--color-page) r g b / 85%);
+    }
+
+    .band-green a:hover {
+      color: var(--color-page);
+    }
+
+    .band-green .eyebrow {
+      color: rgb(from var(--color-page) r g b / 72%);
+    }
+
+    /* ---- display type ------------------------------------------------ */
+    .display-title {
+      color: var(--color-ink);
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(1.9rem, 1.35rem + 2.2vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .lead-text {
+      color: var(--color-body);
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+      line-height: 1.75;
+    }
+
+    /* A band that speaks to the reader is centred on its own measure. */
+    .centred-block {
+      max-width: 42rem;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    /* ---- buttons ----------------------------------------------------- */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      transition: background-color .15s ease, color .15s ease;
+    }
+
+    .button-solid {
+      background: var(--color-canopy);
+      color: var(--color-page);
+    }
+
+    .button-solid:hover {
+      background: var(--color-moss);
+    }
+
+    .button-light {
+      background: var(--color-page);
+      color: var(--color-canopy);
+    }
+
+    .button-quiet {
+      border-color: var(--color-rule);
+      color: var(--color-canopy);
+    }
+
+    .button-quiet:hover {
+      background: var(--color-surface);
+    }
+
+    /* ---- cards ------------------------------------------------------- */
+    .card-label {
+      color: var(--color-moss);
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    .card-title {
+      color: var(--color-ink);
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .read-more {
+      color: var(--color-canopy);
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10.5px;
+      letter-spacing: .1em;
+    }
+
+    /* ---- footer ------------------------------------------------------ */
+    .band-green .footer-wordmark,
+    .band-green .footer-links {
+      color: var(--color-page);
     }
   }
 }

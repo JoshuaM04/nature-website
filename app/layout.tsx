@@ -25,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex flex-col gap-5 items-center min-h-dvh">
+      <body className="flex flex-col items-center min-h-dvh">
         <Navigation />
         {children}
         <Footer />
