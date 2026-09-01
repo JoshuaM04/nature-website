@@ -1,39 +1,27 @@
-'use client';
-import Image from "next/image";
-import Filter from '../../components/filter';
-import Card from '../../components/card';
-import { useState} from 'react';
+import IndexView from './index-view';
+import { fetchStories, topicsFrom } from '../../utilities/inaturalist';
 
-export default function Index() {
-    const habitats = ['ALL', 'CANOPY', 'UNDERSTORY', 'FOREST FLOOR'];
-    const [activeHabitat, setActiveHabitat] = useState('ALL');
+export default async function Index() {
+    const stories = await fetchStories();
 
   return (
     <div className="index flex flex-col gap-5 pl-5 pr-5 w-full">
         <header className="flex flex-col gap-5">
             <ul className="eyebrow flex gap-5">
-                <li>12 specimens</li>
+                <li>From iNaturalist</li>
                 <li>.</li>
-                <li>revised aug 2026</li>
+                <li>{stories.length} stories</li>
             </ul>
             
-            <h1 className="page-title">What lives beneath the canopy</h1>
+            <h1 className="page-title">Latest from the field</h1>
             
-            <p className="intro-paragraph">Twelve species of the eastern decidous woodland, described for identification in the field.</p>
+            <p className="intro-paragraph">Journal posts published by the iNaturalist community, newest first.</p>
         </header>
 
-        <main className="flex flex-col items-center gap-5 w-full">
-            <Filter 
-                habitats={habitats}
-                activeHabitat={activeHabitat}
-                setActiveHabitat={setActiveHabitat}
-
-            />
-
-            <Card
-                activeHabitat={activeHabitat}
-            />
-        </main>
+        <IndexView
+            stories={stories}
+            topics={topicsFrom(stories)}
+        />
     </div>
   );
 }
