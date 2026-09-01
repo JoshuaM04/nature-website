@@ -1,27 +1,24 @@
 import GalleryView from './gallery-view';
+import { Band, Hero } from '../../components/band';
 import { fetchPlates, biomesFrom } from '../../utilities/commons';
 
 export default async function Gallery() {
     const plates = await fetchPlates();
 
     return (
-        <div className="gallery shell flex flex-col gap-8 px-5 w-full">
-            <header className="flex flex-col gap-5">
-                <ul className="eyebrow flex gap-5">
-                    <li>Plates</li>
-                    <li>.</li>
-                    <li>{plates.length} photographs</li>
-                </ul>
-                
-                <h1 className="page-title">Gallery</h1>
-                
-                <p className="intro-paragraph">Every plate at the proportions it was shot, openly licensed, credited to the photographer, and none of it older than three years.</p>   
-            </header>
-
-            <GalleryView
-                plates={plates}
-                biomes={biomesFrom(plates)}
+        <div className="gallery flex flex-col w-full">
+            <Hero
+                eyebrow={['Plates', '.', `${plates.length} photographs`]}
+                title="Every plate at the size it was shot"
+                intro="Openly licensed photographs of the ground the guide covers, credited to the photographer and none of it older than three years."
             />
+
+            <Band>
+                <GalleryView
+                    plates={plates}
+                    biomes={biomesFrom(plates)}
+                />
+            </Band>
         </div>
     );
 }

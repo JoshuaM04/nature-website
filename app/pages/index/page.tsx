@@ -1,27 +1,24 @@
 import IndexView from './index-view';
+import { Band, Hero } from '../../components/band';
 import { fetchStories, topicsFrom } from '../../utilities/inaturalist';
 
 export default async function Index() {
     const stories = await fetchStories();
 
-  return (
-    <div className="index shell flex flex-col gap-8 px-5 w-full">
-        <header className="flex flex-col gap-5">
-            <ul className="eyebrow flex gap-5">
-                <li>From iNaturalist</li>
-                <li>.</li>
-                <li>{stories.length} stories</li>
-            </ul>
-            
-            <h1 className="page-title">Latest from the field</h1>
-            
-            <p className="intro-paragraph">Journal posts published by the iNaturalist community, newest first.</p>
-        </header>
+    return (
+        <div className="index flex flex-col w-full">
+            <Hero
+                eyebrow={['From iNaturalist', '.', `${stories.length} stories`]}
+                title="Latest from the field"
+                intro="Journal posts published by the iNaturalist community, newest first, filed by the subject they take up."
+            />
 
-        <IndexView
-            stories={stories}
-            topics={topicsFrom(stories)}
-        />
-    </div>
-  );
+            <Band tone="cream">
+                <IndexView
+                    stories={stories}
+                    topics={topicsFrom(stories)}
+                />
+            </Band>
+        </div>
+    );
 }

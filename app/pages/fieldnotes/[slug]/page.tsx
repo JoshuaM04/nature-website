@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import NotePlayer from '../../../components/note-player';
+import { Band } from '../../../components/band';
+import Flourish from '../../../components/flourish';
 import { notes, noteBySlug, readCues, readDuration } from '../../../utilities/fieldnotes';
 import { chaptersFrom, runtime } from '../../../utilities/captions';
 
@@ -26,38 +28,44 @@ export default async function FieldNote(props: PageProps<'/pages/fieldnotes/[slu
     ];
 
     return (
-        <div className="shell flex flex-col gap-10 px-5 w-full">
-            <header className="flex flex-col gap-5">
-                <p className="eyebrow">{note.number} {note.subtitle}</p>
+        <div className="flex flex-col w-full">
+            <Band tone="green">
+                <div className="centred-block flex flex-col items-center gap-5">
+                    <Flourish />
 
-                <h1 className="page-title">{note.title}</h1>
+                    <p className="eyebrow">{note.number} &middot; {note.subtitle}</p>
 
-                <ul className="flex flex-wrap gap-2">
-                    {
-                        meta.map((item) => (
-                            <li key={item} className="meta-chip pt-2 pb-2 pl-3 pr-3">{item}</li>
-                        ))
-                    }
-                </ul>
-            </header>
+                    <h1 className="display-title">{note.title}</h1>
 
-            <main className="reading-column flex flex-col gap-10">
-                <NotePlayer
-                    video={note.video}
-                    fallback={note.fallback}
-                    captions={note.captions}
-                    poster={note.image}
-                    title={note.title}
-                    cues={cues}
-                    chapters={chapters}
-                />
+                    <ul className="flex flex-wrap justify-center gap-2">
+                        {
+                            meta.map((item) => (
+                                <li key={item} className="meta-chip pt-2 pb-2 pl-3 pr-3">{item}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </Band>
 
-                <p className="body-text">{note.note}</p>
-            </main>
+            <Band>
+                <div className="reading-column mx-auto flex flex-col gap-10">
+                    <NotePlayer
+                        video={note.video}
+                        fallback={note.fallback}
+                        captions={note.captions}
+                        poster={note.image}
+                        title={note.title}
+                        cues={cues}
+                        chapters={chapters}
+                    />
 
-            <Link href="/pages/fieldnotes" className="eyebrow rule-above pt-5">
-                All field notes
-            </Link>
+                    <p className="lead-text">{note.note}</p>
+
+                    <Link href="/pages/fieldnotes" className="button button-quiet self-start">
+                        All field notes
+                    </Link>
+                </div>
+            </Band>
         </div>
     );
 }

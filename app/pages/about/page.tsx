@@ -1,3 +1,4 @@
+import { Band, Hero, SectionHead } from '../../components/band';
 import { indexData } from '../../utilities/data';
 
 /* The five layers the guide reads the woodland in. Each carries the label the
@@ -71,138 +72,145 @@ export default function About() {
     const tally = (count: number) => (count === 0 ? 'none recorded' : `${count} species`);
 
     return (
-        <div className="shell flex flex-col gap-12 px-5 w-full">
-            <header className="flex flex-col gap-5">
-                <ul className="eyebrow flex gap-5">
-                    <li>Purpose</li>
-                    <li>.</li>
-                    <li>{indexData.length} entries</li>
-                </ul>
+        <div className="flex flex-col w-full">
+            <Hero
+                eyebrow={['Purpose', '.', `${indexData.length} entries`]}
+                title="About this guide"
+                intro="Understory is a record of what lives in one patch of eastern deciduous woodland, and an argument that you cannot protect what you cannot name."
+            />
 
-                <h1 className="page-title">About this guide</h1>
+            <Band>
+                <div className="centred-block flex flex-col items-center gap-8">
+                    <SectionHead title="Why this guide exists" />
 
-                <p className="intro-paragraph reading-column">
-                    Understory is a record of what lives in one patch of eastern deciduous woodland, and an
-                    argument that you cannot protect what you cannot name.
-                </p>
-            </header>
+                    <div className="flex flex-col gap-5 text-left">
 
-            <section className="reading-column flex flex-col gap-5">
-                <h2 className="section-heading">Why this guide exists</h2>
+                    <p className="lead-text">
+                        A short list is not a survey. It is a way in. Each entry gives you enough to recognise
+                        the animal or plant in front of you: what it looks like, where in the forest it sits,
+                        how large it gets and when in the year you are likely to meet it.
+                    </p>
 
-                <p className="body-text">
-                    A short list is not a survey. It is a way in. Each entry gives you enough to recognise the
-                    animal or plant in front of you: what it looks like, where in the forest it sits, how large
-                    it gets and when in the year you are likely to meet it.
-                </p>
+                    <p className="lead-text">
+                        The guide is organised by habitat rather than by taxonomy, because that is how the
+                        woodland actually works. A wood thrush is not a fact about birds; it is a fact about
+                        the understory, the leaf litter it forages in, and the canopy that keeps both damp.
+                        </p>
+                    </div>
+                </div>
+            </Band>
 
-                <p className="body-text">
-                    The guide is organised by habitat rather than by taxonomy, because that is how the woodland
-                    actually works. A wood thrush is not a fact about birds; it is a fact about the understory,
-                    the leaf litter it forages in, and the canopy that keeps both damp.
-                </p>
-            </section>
+            <Band tone="cream">
+                <div className="flex flex-col gap-10">
+                    <SectionHead
+                        eyebrow="Habitat"
+                        title="Five habitats"
+                        intro="The woodland is read in layers, and most entries occupy more than one."
+                    />
 
-            <section className="flex flex-col gap-5">
-                <h2 className="section-heading">Five habitats</h2>
+                    <ul className="data-column mx-auto flex flex-col w-full">
+                        {
+                            habitats.map((habitat) => (
+                                <li key={habitat.label} className="data-row flex items-start gap-5 py-5">
+                                    <img
+                                        className="w-24 aspect-[4/3] object-cover shrink-0"
+                                        src={habitat.image}
+                                        alt={habitat.name}
+                                    />
 
-                <p className="body-text reading-column">
-                    The woodland is read in layers, and most entries occupy more than one.
-                </p>
+                                    <div className="flex flex-col gap-1 grow">
+                                        <h3 className="card-title">{habitat.name}</h3>
+                                        <p className="body-text">{habitat.description}</p>
+                                    </div>
 
-                <ul className="data-column flex flex-col">
-                    {
-                        habitats.map((habitat) => (
-                            <li key={habitat.label} className="data-row flex items-start gap-5 py-5">
-                                <img
-                                    className="w-20 aspect-[4/3] object-cover shrink-0"
-                                    src={habitat.image}
-                                    alt={habitat.name}
-                                />
+                                    <p className={inHabitat(habitat.label) > 0 ? 'count-note' : 'quiet-note'}>
+                                        {tally(inHabitat(habitat.label))}
+                                    </p>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </Band>
 
-                                <div className="flex flex-col gap-1 grow">
-                                    <h3 className="sub-heading">{habitat.name}</h3>
-                                    <p className="body-text">{habitat.description}</p>
-                                </div>
+            <Band>
+                <div className="flex flex-col gap-10">
+                    <SectionHead
+                        eyebrow="Status"
+                        title="Reading conservation status"
+                        intro="Most of what you meet here is common. The scale is shown in full because status changes, and because common is not the same as safe."
+                    />
 
-                                <p className={inHabitat(habitat.label) > 0 ? 'count-note' : 'quiet-note'}>
-                                    {tally(inHabitat(habitat.label))}
-                                </p>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
+                    <ul className="data-column mx-auto flex flex-col w-full">
+                        {
+                            statuses.map((status) => (
+                                <li key={status.code} className="data-row flex items-start gap-5 py-5">
+                                    <span className="status-badge pt-1 pb-1 pl-3 pr-3 shrink-0">{status.code}</span>
 
-            <section className="flex flex-col gap-5">
-                <h2 className="section-heading">Reading conservation status</h2>
+                                    <div className="flex flex-col gap-1 grow">
+                                        <h3 className="card-title">{status.name}</h3>
+                                        <p className="body-text">{status.description}</p>
+                                    </div>
 
-                <p className="body-text reading-column">
-                    Most of what you meet here is common. The scale is shown in full because status changes,
-                    and because common is not the same as safe.
-                </p>
+                                    <p className={atStatus(status.code) > 0 ? 'count-note' : 'quiet-note'}>
+                                        {tally(atStatus(status.code))}
+                                    </p>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </Band>
 
-                <ul className="data-column flex flex-col">
-                    {
-                        statuses.map((status) => (
-                            <li key={status.code} className="data-row flex items-start gap-5 py-5">
-                                <span className="status-badge pt-1 pb-1 pl-3 pr-3 shrink-0">{status.code}</span>
+            <Band tone="cream">
+                <div className="flex flex-col gap-10">
+                    <SectionHead
+                        eyebrow="Pressure"
+                        title="Conservation in the woodland"
+                        intro="Three pressures shape what survives here, and three responses are already in the ground."
+                    />
 
-                                <div className="flex flex-col gap-1 grow">
-                                    <h3 className="sub-heading">{status.name}</h3>
-                                    <p className="body-text">{status.description}</p>
-                                </div>
+                    <div className="card-component">
+                        {
+                            pressures.map((pressure) => (
+                                <article key={pressure.name} className="species-card flex flex-col gap-4 border p-8">
+                                    <h3 className="card-title">{pressure.name}</h3>
+                                    <p className="body-text">{pressure.body}</p>
+                                </article>
+                            ))
+                        }
+                    </div>
+                </div>
+            </Band>
 
-                                <p className={atStatus(status.code) > 0 ? 'count-note' : 'quiet-note'}>
-                                    {tally(atStatus(status.code))}
-                                </p>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
+            <Band>
+                <div className="centred-block flex flex-col gap-8">
+                    <SectionHead eyebrow="Conduct" title="Recording without disturbance" />
 
-            <section className="reading-column flex flex-col gap-5">
-                <h2 className="section-heading">Conservation in the woodland</h2>
+                    <ul className="flex flex-col gap-4 text-left">
+                        {
+                            conduct.map((rule) => (
+                                <li key={rule} className="data-row body-text flex gap-4 pb-4">
+                                    <span className="count-note pt-1">&mdash;</span>
+                                    <span>{rule}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </Band>
 
-                <p className="body-text">
-                    Three pressures shape what survives here, and three responses are already in the ground.
-                </p>
+            <Band tone="green" tight>
+                <div className="centred-block flex flex-col items-center gap-4">
+                    <h2 className="display-title text-3xl">Attribution</h2>
 
-                {
-                    pressures.map((pressure) => (
-                        <div key={pressure.name} className="flex flex-col gap-2">
-                            <h3 className="sub-heading">{pressure.name}</h3>
-                            <p className="body-text">{pressure.body}</p>
-                        </div>
-                    ))
-                }
-            </section>
-
-            <section className="reading-column flex flex-col gap-5">
-                <h2 className="section-heading">Recording without disturbance</h2>
-
-                <ul className="flex flex-col gap-3">
-                    {
-                        conduct.map((rule) => (
-                            <li key={rule} className="body-text flex gap-3">
-                                <span className="count-note pt-2">&mdash;</span>
-                                <span>{rule}</span>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-
-            <section className="reading-column flex flex-col gap-5">
-                <h2 className="section-heading">Attribution</h2>
-
-                <p className="body-text">
-                    Every plate in the gallery is credited to the photographer who made it and to the licence it
-                    was released under, on the plate itself and again on the page it links out to. Nothing is
-                    shown here that was not released for reuse.
-                </p>
-            </section>
+                    <p className="lead-text">
+                        Every plate in the gallery is credited to the photographer who made it and to the
+                        licence it was released under, on the plate itself and again on the page it links out
+                        to. Nothing is shown here that was not released for reuse.
+                    </p>
+                </div>
+            </Band>
         </div>
     );
 }

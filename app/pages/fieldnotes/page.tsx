@@ -1,4 +1,5 @@
 import NotesView from './notes-view';
+import { Band, Hero } from '../../components/band';
 import { notes, readDuration } from '../../utilities/fieldnotes';
 import { runtime } from '../../utilities/captions';
 
@@ -17,23 +18,16 @@ export default async function FieldNotes() {
     }));
 
     return (
-        <div className="shell flex flex-col gap-8 px-5 w-full">
-            <header className="flex flex-col gap-5">
-                <ul className="eyebrow flex gap-5">
-                    <li>Recordings</li>
-                    <li>.</li>
-                    <li>{items.length} {items.length === 1 ? 'clip' : 'clips'}</li>
-                </ul>
+        <div className="flex flex-col w-full">
+            <Hero
+                eyebrow={['Recordings', '.', `${items.length} ${items.length === 1 ? 'clip' : 'clips'}`]}
+                title="Field notes"
+                intro="Short recordings made in the field, each captioned by hand. The transcript on every note is read back out of those captions, so the two cannot disagree."
+            />
 
-                <h1 className="page-title">Field Notes</h1>
-
-                <p className="intro-paragraph reading-column">
-                    Short recordings made in the field, each captioned by hand. The transcript on every note is
-                    read back out of those captions, so the two cannot disagree.
-                </p>
-            </header>
-
-            <NotesView items={items} features={['cc', 'sub', 'ch', 'ad']} />
+            <Band tone="cream">
+                <NotesView items={items} features={['cc', 'sub', 'ch', 'ad']} />
+            </Band>
         </div>
     );
 }
