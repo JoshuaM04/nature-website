@@ -575,7 +575,10 @@ html {
       color: rgb(from var(--color-page) r g b / 85%);
     }
 
-    .band-green a:hover {
+    /* A button on the green band carries its own ground, so it is not a link
+       for the purposes of this rule. Without the exclusion its label turns the
+       colour of the button behind it and disappears. */
+    .band-green a:not(.button):hover {
       color: var(--color-page);
     }
 
@@ -632,6 +635,11 @@ html {
 
     .button-light {
       background: var(--color-page);
+      color: var(--color-canopy);
+    }
+
+    .button-light:hover {
+      background: var(--color-ochre-tint);
       color: var(--color-canopy);
     }
 
