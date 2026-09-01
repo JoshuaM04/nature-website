@@ -3,6 +3,13 @@ import { Band, Hero } from '../../components/band';
 import { notes, readDuration } from '../../utilities/fieldnotes';
 import { runtime } from '../../utilities/captions';
 
+const features = [
+    { code: 'cc', label: 'Closed captions' },
+    { code: 'sub', label: 'Subtitles' },
+    { code: 'ch', label: 'Chapters' },
+    { code: 'ad', label: 'Audio description' }
+];
+
 export default async function FieldNotes() {
     const lengths = await Promise.all(notes.map((note) => readDuration(note)));
 
@@ -26,7 +33,7 @@ export default async function FieldNotes() {
             />
 
             <Band tone="cream">
-                <NotesView items={items} features={['cc', 'sub', 'ch', 'ad']} />
+                <NotesView items={items} features={features} />
             </Band>
         </div>
     );

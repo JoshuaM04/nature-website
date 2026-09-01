@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 interface NotesViewProps {
     items: Array<FieldCard>;
-    features: Array<string>;
+    features: Array<{ code: string; label: string }>;
 }
 
 export default function NotesView({items, features}: NotesViewProps) {
@@ -21,13 +21,19 @@ export default function NotesView({items, features}: NotesViewProps) {
     return (
         <main className="flex flex-col gap-8">
             <div className="masthead-rule-light flex justify-between items-center gap-5 px-5 pb-5 -mx-5">
-                <div className="eyebrow flex gap-2">
+                <ul className="flex flex-wrap gap-2">
                     {
-                        features.map((item, index) => (
-                            <div className="flex justify-center items-center border border-rule pl-3 pr-3" key={index}>{item}</div>
+                        features.map((feature) => (
+                            <li
+                                key={feature.code}
+                                title={feature.label}
+                                className="feature-badge flex items-center gap-2 py-2 px-4">
+                                <span className="feature-dot" />
+                                {feature.code}
+                            </li>
                         ))
                     }
-                </div>
+                </ul>
 
                 <Select selectedKey={sort} onSelectionChange={(key) => setSort(String(key))}>
                     <Label className="sr-only">Sort</Label>

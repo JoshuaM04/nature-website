@@ -80,27 +80,11 @@ html {
   background: var(--color-canopy);
 }
 
-/* The filter rail carries a slimmer one, since it sits under the chips. */
+/* The rail takes the same bar as the page, so the two read as one system
+   rather than as two different scrollbars that happen to share a site. */
 .filter-rail {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-rule) transparent;
-}
-
-.filter-rail::-webkit-scrollbar {
-  height: 4px;
-}
-
-.filter-rail::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.filter-rail::-webkit-scrollbar-thumb {
-  background: var(--color-rule);
-  border: 0;
-}
-
-.filter-rail:hover::-webkit-scrollbar-thumb {
-  background: var(--color-moss);
+  scrollbar-color: var(--color-moss) var(--color-hairline);
 }
 
 @layer base {
@@ -255,6 +239,34 @@ html {
       font-family: "IBM Plex Serif", Georgia, serif;
       font-weight: 400;
       font-size: 15px;
+    }
+
+    /* What a recording carries. These sat at eyebrow size with a hairline and
+       disappeared into the cream, so they are lifted onto their own surface
+       and given a mark to read as a badge rather than as a caption. */
+    .feature-badge {
+      color: var(--color-canopy);
+      background: var(--color-surface);
+      border: 1px solid var(--color-rule);
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      transition: border-color .15s ease, color .15s ease;
+    }
+
+    .feature-badge:hover {
+      color: var(--color-moss);
+      border-color: var(--color-moss);
+    }
+
+    .feature-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-moss);
     }
 
     .filter-chips {
