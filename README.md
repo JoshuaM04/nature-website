@@ -15,14 +15,14 @@ Built with [Next.js](https://nextjs.org) (App Router), TypeScript, Tailwind CSS 
 | <img src="docs/desktop.png" alt="Understory home page on desktop" width="100%"> | <img src="docs/mobile.png" alt="Understory home page on mobile" width="260"> |
 
 <details>
-<summary><b>Full page — desktop</b></summary>
+<summary><b>Full page, desktop</b></summary>
 
 <img src="docs/desktop-full.png" alt="Full desktop home page, top to bottom" width="100%">
 
 </details>
 
 <details>
-<summary><b>Full page — mobile</b></summary>
+<summary><b>Full page, mobile</b></summary>
 
 <img src="docs/mobile-full.png" alt="Full mobile home page, top to bottom" width="320">
 
@@ -51,11 +51,11 @@ Everything shown is openly licensed and credited to the photographer who made it
 
 **Content pulled from open sources**
 
-- **Gallery** — photographs from Wikimedia Commons, filtered across twelve ecosystems (ocean, coast,
+- **Gallery**: photographs from Wikimedia Commons, filtered across twelve ecosystems (ocean, coast,
   mountains, valley, canyon, river, lake, waterfall, forest, desert, glacier, volcano). Relevance
   comes from the categories Commons reviewers curate rather than from a keyword search, and nothing
   older than three years reaches the page.
-- **Index** — the newest journal posts from iNaturalist, filed under topics derived from their
+- **Index**: the newest journal posts from iNaturalist, filed under topics derived from their
   headlines.
 - Every plate links back to its source page and carries the photographer and licence.
 
@@ -63,7 +63,7 @@ Everything shown is openly licensed and credited to the photographer who made it
 
 - A page per recording, with a video player, chapters and a transcript.
 - The transcript is parsed out of the WebVTT caption file, so it always matches the captions.
-- Clicking a line of the transcript seeks the video; the line under the playhead is highlighted.
+- Clicking a line of the transcript seeks the video, and the line under the playhead is highlighted.
 - Clip length is read out of the MP4 header rather than stored alongside it.
 - The still on the card and the video poster are both frames taken from the recording itself.
 
@@ -90,29 +90,39 @@ This project was mostly about practising front-end fundamentals and getting comf
 Next.js, and a few things stuck properly:
 
 **Responsive design with CSS Grid.** Building layouts that hold together from a 375px phone up to a
-wide desktop, using grid rather than fighting with fixed widths. Getting the gallery to reflow into
-a bento arrangement on desktop while stacking cleanly on mobile taught me a lot about how grid
-tracks actually behave.
+wide desktop, using grid rather than fighting with fixed widths. This is also where I found the
+clearest gap in what I know. My grids were responsive, but on wide desktop resolutions I noticed
+unusually large gaps between cells whenever there were not enough cards to fill a row, because a
+track that has nothing in it still takes up space. Recognising the problem was straightforward.
+Knowing the right way to solve it was not, and that is an area of front-end design I still want to
+refine.
+
+**Colour tokens and style management.** Early on I was repeating the same Tailwind utility classes
+across components, and small differences kept creeping in between places that were meant to match.
+Defining colour tokens and prebuilt classes in the CSS file and applying those to my components
+instead saved a lot of time, and it meant a change to a colour or a text style happened in one place
+rather than in a dozen. It also made styling misalignments much less likely, because two components
+using the same class cannot quietly drift apart.
 
 **Routing in Next.js.** How the App Router maps folders to URLs, how nested routes work, and how a
 dynamic route like `[slug]` generates a page per record rather than needing one file each.
 
 **State management and prop drilling.** The filter was the thing that taught me this. The filter
-buttons and the cards both need the same piece of state, and the fix is not to duplicate it — it is
+buttons and the cards both need the same piece of state, and the fix is not to duplicate it. It is
 to make sure both components share a common parent that owns the state and passes it down. Working
 that out and restructuring the components around it was the most useful lesson in the project.
 
 **Third-party component libraries.** Using React Aria Components for behaviour I did not want to
-build from scratch — the drop-down filter on the field notes page and the modal navigation menu.
-Learning to read a library's API and fit it into my own styling was a different skill from writing
-the component myself.
+build from scratch, such as the drop-down filter on the field notes page and the modal navigation
+menu. Learning to read a library's API and fit it into my own styling was a different skill from
+writing the component myself.
 
 **Client components and the trade-offs.** When a component needs `"use client"` in order to use
-React hooks like `useState`, and — more importantly — when it does not. Marking a component as a
-client component means it ships JavaScript to the browser and cannot fetch data on the server, so
-the trade-off is real. What I settled into was keeping pages as server components that fetch the
-data, then pushing the interactive parts down into small client components underneath them. That
-pattern shows up across the index, gallery and field notes pages.
+React hooks like `useState`, and more importantly when it does not. Marking a component as a client
+component means it ships JavaScript to the browser and cannot fetch data on the server, so the
+trade-off is real. What I settled into was keeping pages as server components that fetch the data,
+then pushing the interactive parts down into small client components underneath them. That pattern
+shows up across the index, gallery and field notes pages.
 
 ---
 
@@ -127,13 +137,13 @@ The foundation of the application is mine, and most of what the AI worked on lat
 top of decisions I had already made:
 
 - Project setup, the root layout, and the responsive typography scale using `clamp()`.
-- The colour token system in `globals.css` — the palette, the plate grounds, the status colours.
-  Every colour the AI used later came from tokens I had already defined.
+- The colour token system in `globals.css`, including the palette, the plate grounds and the status
+  colours. Every colour the AI used later came from tokens I had already defined.
 - The card component and the `data.js` file behind it.
 - The filter architecture. Working out that `filter.tsx` needed to share state with `card.tsx`, and
   restructuring so props are passed down from each page, was mine and took several passes.
 - The routing structure and the `pages` directory.
-- The gallery component and its layout.
+- The gallery component and its layout, including making the grids responsive.
 - React Aria Components for the modal navigation, the routes array, and the active-route state.
 - Empty states, alignment fixes, mobile responsiveness, the horizontal scrollbar styling.
 - Installing Jest and writing the first tests.
@@ -148,14 +158,15 @@ I used Claude for the parts where I wanted to move faster than I could research:
   no date filter at all.
 - The WebVTT parser and the MP4 duration parser.
 - The visual overhaul onto a reference design, and the band system it uses.
+- The bento arrangement the gallery uses on desktop, and the fix for the grid gaps I had run into.
 - Building out the about page and the field notes detail route.
 - The Docker setup.
 
 ### What I took away from it
 
 The most useful thing was not the code. It was watching problems get diagnosed rather than guessed
-at — a 404 that turned out to be a corrupted Next.js type cache rather than a routing mistake, a
-video poster that came out black because the clip fades in from nothing, an image transfer that got
+at. A 404 that turned out to be a corrupted Next.js type cache rather than a routing mistake. A
+video poster that came out black because the clip fades in from nothing. An image transfer that got
 thrown away because the bytes did not decode cleanly.
 
 The honest downside is that the codebase moved faster than my understanding of it in places. I can
@@ -167,8 +178,8 @@ read all of it, but there are files I did not write line by line, and that is a 
 
 I want to scale down the size of my next project.
 
-Rather than building something this broad again, I plan to work on something smaller — a user
-authentication system — and use it to learn about the different authentication methods properly:
+Rather than building something this broad again, I plan to work on something smaller, a user
+authentication system, and use it to learn about the different authentication methods properly:
 sessions, tokens, OAuth, and where each one is the right choice.
 
 The reason is control. On a smaller project I will maintain more knowledge over the infrastructure I
