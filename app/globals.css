@@ -322,6 +322,12 @@ html {
       border-top: 3px solid var(--color-moss);
     }
 
+    /* A card that leads somewhere rather than reporting something takes no
+       accent rule, so nothing is drawn across the top of its picture. */
+    .card-component .species-card.plain-card {
+      border-top: 1px solid var(--color-rule);
+    }
+
     .card-component a.species-card:hover {
       border-color: var(--color-moss);
       box-shadow: 0 2px 14px rgb(from var(--color-ink) r g b / 8%);
