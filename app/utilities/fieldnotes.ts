@@ -15,7 +15,6 @@ export interface FieldNote {
     video: string;
     fallback?: string;
     captions: string;
-    note: string;
 }
 
 export const notes = fieldData as Array<FieldNote>;

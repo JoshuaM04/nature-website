@@ -109,7 +109,6 @@ export const fieldData = [
         time: '1 min 12 s',
         video: '/woodthrush.mp4',
         fallback: '/woodthrush.ogg',
-        captions: '/woodthrushSubtitles.vtt',
-        note: 'Two males held adjacent territories along the same seep. Captions carry the non-speech audio, which is where most of the information is.'
+        captions: '/woodthrushSubtitles.vtt'
     }
 ];

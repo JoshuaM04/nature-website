@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import VideoFrame from './video-frame';
 
 export interface FieldCard {
     slug: string;
@@ -6,6 +7,7 @@ export interface FieldCard {
     subtitle: string;
     number: string;
     image: string;
+    video: string;
     body: string;
     labels: Array<string>;
     length: string;
@@ -27,7 +29,7 @@ export default function Field({items}: FieldProps) {
                 items.map((item) => (
                     <Link key={item.slug} href={`/pages/fieldnotes/${item.slug}`} className="species-card flex flex-col gap-5 border p-5">
                         <section className="img-container plate-frame -ml-5 -mr-5 -mt-5 relative">
-                            <img className="w-full aspect-[4/3] object-cover" src={item.image} alt={item.title} />
+                            <VideoFrame src={item.video} alt={item.title} className="w-full aspect-[4/3] object-cover" />
 
                             <div className="specimen-tag absolute top-5 left-5 pt-1 pb-1 pl-3 pr-3">
                                 {item.number}

@@ -53,13 +53,10 @@ export default async function FieldNote(props: PageProps<'/pages/fieldnotes/[slu
                         video={note.video}
                         fallback={note.fallback}
                         captions={note.captions}
-                        poster={note.image}
                         title={note.title}
                         cues={cues}
                         chapters={chapters}
                     />
-
-                    <p className="lead-text">{note.note}</p>
 
                     <Link href="/pages/fieldnotes" className="button button-quiet self-start">
                         All field notes

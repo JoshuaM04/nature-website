@@ -20,6 +20,7 @@ export default async function FieldNotes() {
         subtitle: note.subtitle,
         number: note.number,
         image: note.image,
+        video: note.video,
         body: note.body,
         labels: note.labels,
         length: lengths[index] > 0 ? runtime(lengths[index]) : note.time,

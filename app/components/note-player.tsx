@@ -2,18 +2,21 @@
 import { useRef, useState } from 'react';
 import type { Cue } from '../utilities/captions';
 import { timecode } from '../utilities/captions';
+import { useVideoFrame } from './video-frame';
 
 interface NotePlayerProps {
     video: string;
     fallback?: string;
     captions: string;
-    poster: string;
     title: string;
     cues: Array<Cue>;
     chapters: Array<{ at: number; label: string }>;
 }
 
-export default function NotePlayer({video, fallback, captions, poster, title, cues, chapters}: NotePlayerProps) {
+export default function NotePlayer({video, fallback, captions, title, cues, chapters}: NotePlayerProps) {
+    /* The still the player rests on is a frame of what it is about to play. */
+    const poster = useVideoFrame(video);
+
     const player = useRef<HTMLVideoElement>(null);
     const [at, setAt] = useState(0);
 

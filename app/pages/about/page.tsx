@@ -245,14 +245,14 @@ export default async function About() {
                 </div>
             </Band>
 
-            <Band tone="green" tight>
-                <div className="centred-block flex flex-col items-center gap-4">
-                    <h2 className="display-title text-3xl">Attribution</h2>
+            <Band>
+                <div className="centred-block flex flex-col items-center gap-4 rule-above pt-12">
+                    <SectionHead eyebrow="Credit" title="Attribution" />
 
                     <p className="lead-text">
                         Every plate in the gallery is credited to the photographer who made it and to the
-                        licence it was released under, on the plate itself and again on the page it links out
-                        to. Nothing is shown here that was not released for reuse.
+                        licence it was released under, on the plate itself and again on the page it links
+                        out to. Nothing is shown here that was not released for reuse.
                     </p>
                 </div>
             </Band>
