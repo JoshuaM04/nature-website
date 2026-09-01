@@ -1,6 +1,7 @@
 export default function Footer() {
     return (
-        <footer className="footer-rule flex flex-col gap-2 w-full p-5 border-t mt-auto">
+        <footer className="footer-rule w-full border-t mt-auto">
+            <div className="shell flex flex-col gap-2 p-5">
 
             <h3 className="footer-wordmark">Understory</h3>
             
@@ -9,6 +10,7 @@ export default function Footer() {
                 <li>sources</li>
                 <li>licensing</li>
             </ul>
+            </div>
         </footer>
     );
 }

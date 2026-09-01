@@ -361,5 +361,76 @@
         grid-row: span 2;
       }
     }
+
+    /* A single measure for the whole site. Full-bleed text ran to the width
+       of the window and read as a wall; everything lands on one column now. */
+    .shell {
+      width: 100%;
+      max-width: 76rem;
+      margin-inline: auto;
+    }
+
+    .reading-column {
+      max-width: 44rem;
+    }
+
+    /* Wider than prose, narrower than the page: enough for a thumbnail, a
+       description and a count to read as one row. */
+    .data-column {
+      max-width: 54rem;
+    }
+
+    .section-heading {
+      color: var(--color-ink);
+      font-family: "Plex Sans Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 1.25;
+    }
+
+    .sub-heading {
+      color: var(--color-ink);
+      font-family: "Plex Sans Condensed", sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    .body-text {
+      color: var(--color-body);
+      font-family: "Plex Serif", sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .meta-chip {
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-family: "Plex Mono", sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      border: 1px solid var(--color-rule);
+    }
+
+    .rule-above {
+      border-top: 1px solid var(--color-hairline);
+    }
+
+    .data-row {
+      border-bottom: 1px solid var(--color-hairline);
+    }
+
+    .count-note {
+      color: var(--color-moss);
+      font-family: "Plex Mono", sans-serif;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .quiet-note {
+      color: var(--color-muted);
+      font-family: "Plex Mono", sans-serif;
+      font-size: 11px;
+      white-space: nowrap;
+    }
   }
 }

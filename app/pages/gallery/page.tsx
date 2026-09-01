@@ -5,7 +5,7 @@ export default async function Gallery() {
     const plates = await fetchPlates();
 
     return (
-        <div className="gallery flex flex-col gap-5 pl-5 pr-5 w-full">
+        <div className="gallery shell flex flex-col gap-8 px-5 w-full">
             <header className="flex flex-col gap-5">
                 <ul className="eyebrow flex gap-5">
                     <li>Plates</li>

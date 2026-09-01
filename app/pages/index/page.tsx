@@ -5,7 +5,7 @@ export default async function Index() {
     const stories = await fetchStories();
 
   return (
-    <div className="index flex flex-col gap-5 pl-5 pr-5 w-full">
+    <div className="index shell flex flex-col gap-8 px-5 w-full">
         <header className="flex flex-col gap-5">
             <ul className="eyebrow flex gap-5">
                 <li>From iNaturalist</li>

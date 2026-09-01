@@ -33,7 +33,8 @@ export default function Navigation() {
     const pathname = usePathname();
 
     return (
-        <div className="masthead-rule flex justify-between items-center gap-5 p-5 w-full">
+        <div className="masthead-rule w-full">
+            <div className="shell flex justify-between items-center gap-5 p-5">
             <div>
                 <a className="masthead-wordmark" href="">Understory</a>
                 <p className="masthead-tagline">temperate forest field guide</p>
@@ -102,6 +103,7 @@ export default function Navigation() {
                     </Modal>
                 </ModalOverlay>
             </DialogTrigger>  
+            </div>
         </div>
     );
 }
