@@ -13,7 +13,7 @@ export default async function Gallery() {
                 intro="Openly licensed photographs of the ground the guide covers, credited to the photographer and none of it older than three years."
             />
 
-            <Band>
+            <Band tone="cream">
                 <GalleryView
                     plates={plates}
                     biomes={biomesFrom(plates)}

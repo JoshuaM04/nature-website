@@ -211,14 +211,28 @@
 
     .filter-chips {
       color: var(--color-muted);
+      background: var(--color-surface);
       border: 1px solid var(--color-rule);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       min-width: fit-content;
       max-height: 40px;
+      transition: color .15s ease, border-color .15s ease, background-color .15s ease;
     }
 
-    .filter-chips-active {
+    .filter-chips:hover {
+      color: var(--color-canopy);
+      border-color: var(--color-canopy);
+    }
+
+    /* The chosen one is the only solid thing on the row. */
+    .filter-chips-active,
+    .filter-chips-active:hover {
       color: var(--color-page);
       background: var(--color-canopy);
+      border-color: var(--color-canopy);
     }
 
     .filter-bar-rule {
@@ -239,6 +253,18 @@
     .species-card {
       background: var(--color-surface);
       border: 1px solid var(--color-rule);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    /* A card in a stacked grid is headed by a rule, which is the only colour
+       it carries at rest. The gallery is images and takes none of this. */
+    .card-component .species-card {
+      border-top: 3px solid var(--color-moss);
+    }
+
+    .card-component a.species-card:hover {
+      border-color: var(--color-moss);
+      box-shadow: 0 2px 14px rgb(from var(--color-ink) r g b / 8%);
     }
 
     .plate-placeholder {
@@ -266,9 +292,10 @@
 
     .common-name {
       color: var(--color-ink);
-      font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+      font-family: "IBM Plex Serif", Georgia, serif;
       font-weight: 600;
-      font-size: 22px;
+      font-size: 20px;
+      line-height: 1.3;
     }
 
     .scientific-name {
@@ -287,11 +314,13 @@
     }
 
     .habitat-chip {
-      color: var(--color-muted);
+      color: var(--color-moss);
+      background: var(--color-ochre-tint);
       text-transform: uppercase;
       font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 10.5px;
-      border: 1px solid var(--color-rule);
+      letter-spacing: .06em;
+      border: 1px solid transparent;
     }
 
     .card-divider {
