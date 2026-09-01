@@ -104,8 +104,9 @@ instead saved a lot of time, and it meant a change to a colour or a text style h
 rather than in a dozen. It also made styling misalignments much less likely, because two components
 using the same class cannot quietly drift apart.
 
-**Routing in Next.js.** How the App Router maps folders to URLs, how nested routes work, and how a
-dynamic route like `[slug]` generates a page per record rather than needing one file each.
+**Routing in Next.js.** The basics of how the App Router maps folders to URLs, and how to display a
+functional component consistently across every page by putting it in the root `layout.tsx` rather
+than importing it into each route separately. The navigation and the footer are shared that way.
 
 **State management and prop drilling.** The filter was the thing that taught me this. The filter
 buttons and the cards both need the same piece of state, and the fix is not to duplicate it. It is
@@ -124,12 +125,41 @@ trade-off is real. What I settled into was keeping pages as server components th
 then pushing the interactive parts down into small client components underneath them. That pattern
 shows up across the index, gallery and field notes pages.
 
+**Jest and Docker, as experiments.** I did not maintain full development over either of these. Both
+were a guided learning experience where what I wanted was to see how they would apply in this
+environment: what a unit test is actually for and which parts of a codebase are worth testing, and
+what containerising an application involves and why a multi-stage build is put together the way it
+is. I treated them as things to carry into my next project for real practice rather than as things I
+had finished learning here.
+
 ---
 
 ## What AI helped with & what I did myself
 
-I want to be straightforward about this, because the split is genuinely uneven and I learned
-different things from each half.
+### How the project was planned
+
+I took a different approach to the planning phase on this one. I had Claude act as two team members,
+as though I were a junior developer on a professional team at a company.
+
+The first was a Senior Software Engineer, who wrote documentation on how the project should work and
+designated the work the way a senior engineer would hand tasks to a junior. The second was a UI/UX
+designer, who produced a visual blueprint for what the interface should look like and what the
+colour scheme would be.
+
+I then referenced both of those as I built: the infrastructure, the colour tokens, the components
+and the pages are all work I did against that documentation and that design.
+
+### Where AI came in
+
+I started off building the application manually, and once it was working I realised I wanted more
+from it. The pages were rendering hard-coded objects out of `data.js`, and the finished result felt
+dated. It did not feel innovative or exciting, and it was not bringing much to the scene.
+
+So I had Claude assist me with fetching real resources and displaying them through the infrastructure
+I had already created. We replaced the hard-coded objects in `data.js` with real-world information,
+but kept my coding and styling infrastructure in place, so that information gets filtered through and
+displayed in the format I had already built. The card component, the filter, the colour tokens and
+the layout are all still mine. What changed is where the content comes from.
 
 ### What I built myself
 
