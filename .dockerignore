@@ -1,0 +1,25 @@
+# Installed inside the image against the lockfile, never copied in. Copying a
+# host node_modules also copies binaries built for the host platform.
+node_modules
+
+# Build output. Copying this in would carry a stale, and at one point corrupt,
+# build into a fresh one.
+.next
+out
+
+.git
+.gitignore
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env*.local
+
+README.md
+Dockerfile
+.dockerignore
+
+.vscode
+.idea
+.DS_Store
