@@ -9,6 +9,7 @@ export interface FieldCard {
     body: string;
     labels: Array<string>;
     length: string;
+    status?: { code: string; name: string };
 }
 
 interface FieldProps {
@@ -31,6 +32,14 @@ export default function Field({items}: FieldProps) {
                             <div className="specimen-tag absolute top-5 left-5 pt-1 pb-1 pl-3 pr-3">
                                 {item.number}
                             </div>
+
+                            {
+                                item.status && (
+                                    <div className="status-badge absolute top-5 right-5 pt-1 pb-1 pl-3 pr-3" title={item.status.name}>
+                                        {item.status.code}
+                                    </div>
+                                )
+                            }
                         </section>
 
                         <section className="flex flex-col justify-between gap-5 h-full">

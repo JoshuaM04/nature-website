@@ -2,6 +2,7 @@ import NotesView from './notes-view';
 import { Band, Hero } from '../../components/band';
 import { notes, readDuration } from '../../utilities/fieldnotes';
 import { runtime } from '../../utilities/captions';
+import { statusForSpecies } from '../../utilities/conservation';
 
 const features = [
     { code: 'cc', label: 'Closed captions' },
@@ -21,7 +22,8 @@ export default async function FieldNotes() {
         image: note.image,
         body: note.body,
         labels: note.labels,
-        length: lengths[index] > 0 ? runtime(lengths[index]) : note.time
+        length: lengths[index] > 0 ? runtime(lengths[index]) : note.time,
+        status: statusForSpecies(note.subtitle)
     }));
 
     return (

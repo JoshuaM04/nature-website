@@ -1,6 +1,6 @@
 import { Band, Hero, SectionHead } from '../../components/band';
 import { fetchPlates } from '../../utilities/commons';
-import { indexData } from '../../utilities/data';
+import { statuses, countAtStatus } from '../../utilities/conservation';
 
 /* The grounds the guide covers, in the order water gives way to rock. Each
    carries the label the gallery files its plates under, so the counts beside
@@ -80,13 +80,6 @@ const ecosystems = [
     }
 ];
 
-const statuses = [
-    { code: 'LC', name: 'Least concern', description: 'Populations stable across the range.' },
-    { code: 'NT', name: 'Near threatened', description: 'Declining, and likely to qualify for a higher category soon.' },
-    { code: 'VU', name: 'Vulnerable', description: 'Facing a high risk of extinction in the wild.' },
-    { code: 'EN', name: 'Endangered', description: 'Facing a very high risk of extinction in the wild.' },
-    { code: 'CR', name: 'Critically endangered', description: 'Facing an extremely high risk of extinction.' }
-];
 
 const pressures = [
     {
@@ -120,7 +113,7 @@ export default async function About() {
        beside a name is genuinely of it. The drawing is only the fallback for a
        ground the gallery came back empty on. */
     const plateFor = (label: string) => plates.find((plate) => plate.labels.includes(label))?.image;
-    const atStatus = (code: string) => indexData.filter((species) => species.status === code).length;
+    const atStatus = countAtStatus;
     const tally = (count: number, noun: string) => (count === 0 ? 'none recorded' : `${count} ${noun}`);
 
     return (
